@@ -1,5 +1,5 @@
 //
-//  ContentView2.swift
+//  ContentView.swift
 //  Restart
 //
 //  Created by Gabriel Orlando on 06/06/24.
@@ -7,18 +7,20 @@
 
 import SwiftUI
 
-struct ContentView2: View {
+struct ContentView: View {
+	@AppStorage("onboarding") var isOnboardingViewActive: Bool = true
+	
     var body: some View {
-		VStack {
-			Image(systemName: "globe")
-				.imageScale(.large)
-				.foregroundStyle(.tint)
-			Text("Hello, world!")
+		ZStack {
+			if isOnboardingViewActive {
+				OnboardingView()
+			} else {
+				HomeView()
+			}
 		}
-		.padding()
     }
 }
 
 #Preview {
-    ContentView2()
+    ContentView()
 }
